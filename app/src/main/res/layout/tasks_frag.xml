@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <import type="androidx.core.content.ContextCompat" />
+
+        <variable
+            name="tasksFragViewModel"
+            type="com.example.mytodo.tasks.TasksViewModel" />
+    </data>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:id="@+id/coordinator_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.example.mytodo.ScrollChildSwipeRefreshLayout
+            android:id="@+id/refresh_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:onRefreshListener="@{tasksFragViewModel::refresh}"
+            app:refreshing="@{tasksFragViewModel.dataLoading}">
+
+            <RelativeLayout
+                android:id="@+id/tasks_container_layout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:clickable="true"
+                android:focusable="true"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:id="@+id/tasks_linear_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:visibility="@{tasksFragViewModel.empty ? View.GONE : View.VISIBLE }">
+
+                    <TextView
+                        android:id="@+id/filtering_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/list_item_padding"
+                        android:layout_marginTop="@dimen/activity_vertical_margin"
+                        android:layout_marginEnd="@dimen/list_item_padding"
+                        android:layout_marginBottom="@dimen/activity_vertical_margin"
+                        android:gravity="center_vertical"
+                        android:text="@{context.getString(tasksFragViewModel.currentFilteringLabel)}"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Title" />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/tasks_list"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:items="@{tasksFragViewModel.items}"
+                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/no_tasks_layout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:orientation="vertical"
+                    android:visibility="@{tasksFragViewModel.empty ? View.VISIBLE : View.GONE }">
+
+                    <ImageView
+                        android:id="@+id/no_tasks_icon"
+                        android:layout_width="@dimen/no_tasks_icon"
+                        android:layout_height="@dimen/no_tasks_icon"
+                        android:layout_gravity="center"
+                        android:contentDescription="@string/no_tasks_image_content_description"
+                        android:src="@{ContextCompat.getDrawable(context,tasksFragViewModel.noTaskIconRes)}" />
+
+                    <TextView
+                        android:id="@+id/no_tasks_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/list_item_padding"
+                        android:gravity="center"
+                        android:text="@{context.getString(tasksFragViewModel.noTasksLabel)}" />
+                </LinearLayout>
+            </RelativeLayout>
+        </com.example.mytodo.ScrollChildSwipeRefreshLayout>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/add_task_fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/fab_margin"
+            android:backgroundTint="@color/colorPrimaryLight"
+            android:contentDescription="@string/add_tasks_button_content_description"
+            android:elevation="@dimen/elevation"
+            android:src="@drawable/ic_add"
+            app:fabSize="normal"
+            app:layout_anchor="@+id/refresh_layout"
+            app:layout_anchorGravity="bottom|right|end" />
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</layout>

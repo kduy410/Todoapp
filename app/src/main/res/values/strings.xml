@@ -1,0 +1,46 @@
+<resources>
+    <string name="app_name">TO-DO</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="tasks_header_image_content_description">Header image content description</string>
+    <string name="nav_view_header_title">The TO-DOs</string>
+    <string name="list_title">Task List</string>
+    <string name="statistics_title">Statistics</string>
+    <string name="add_tasks_button_content_description">Add tasks content description</string>
+    <string name="no_tasks_image_content_description">No tasks image content description</string>
+    <string name="loading_tasks_error">Error while loading tasks</string>
+    <string name="label_all">All Tasks</string>
+    <string name="label_active">Active Tasks</string>
+    <string name="label_completed">Completed Tasks</string>
+    <string name="no_tasks_all">You have no tasks!</string>
+    <string name="no_tasks_active">You have no active tasks!</string>
+    <string name="no_tasks_completed">You have no completed tasks!</string>
+    <string name="completed_tasks_cleared">Completed tasks cleared</string>
+    <string name="task_marked_complete">Task marked complete</string>
+    <string name="task_marked_active">Task marked active</string>
+    <string name="successfully_deleted_task_message">Task was deleted</string>
+    <string name="successfully_added_task_message">Task added</string>
+    <string name="successfully_saved_task_message">Task saved</string>
+    <string name="menu_filter">Filter</string>
+    <string name="menu_clear">Clear completed</string>
+    <string name="menu_refresh">Refresh</string>
+    <string name="nav_all">All</string>
+    <string name="nav_active">Active</string>
+    <string name="nav_completed">Completed</string>
+    <string name="refresh">Refresh</string>
+    <string name="test">Hello</string>
+    <string name="title_hint">Title</string>
+    <string name="description_text">Enter your task here</string>
+    <string name="add_task">New task</string>
+    <string name="empty_task_message">Tasks cannot be empty</string>
+    <string name="no_data">No data</string>
+    <string name="loading_task_error">Error while loading task</string>
+    <string name="edit_task">Edit</string>
+    <string name="menu_delete_task">Delete</string>
+    <string name="statistics_active_tasks">Active tasks: %.1f%%</string>
+    <string name="statistics_no_tasks">You have no tasks.</string>
+    <string name="statistics_completed_tasks">Completed tasks: %.1f%%</string>
+    <string name="statistics_error">Error loading statistics.</string>
+
+
+</resources>
